@@ -1,12 +1,27 @@
+/* Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Almendra&display=swap');
+
+* {
+    font-family: "Alice", serif;
+}
+
 /* Estilos Header */
-#header {
-    background-color: black;
+#header, #footer {
+    display: flex;
+    padding: 0.5rem 1rem;
+    flex-direction: row;
+    background-color: #392d55;
     color: azure;
 }
 
-/* Estilos Footer */
-#footer {
-    background-color: black;
+#header {
+    justify-content: space-between;
+}
+
+main {
+    background-color: #7459a4;
+    box-shadow: 0 0.8rem 1rem inset #392d55, 0 -0.8rem 1rem inset #392d55;
     color: azure;
 }
 
@@ -14,4 +29,39 @@
 #loanding {
     display: flex;
     flex-direction: row;
+}
+
+#header_title {
+    font-family: "Almendra", serif;
+    font-size: 4rem;
+    font-weight: 900;
+    -webkit-text-stroke: 0.005rem #f68936;
+    background: linear-gradient(180deg, #f68936, #924006);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#header_list {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-right: 1rem;
+    gap: 0.2rem;
+    font-size: 1.5rem;
+}
+
+#header_user_icon {
+    width: 6rem;
+}
+
+.header_list_element {
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    cursor: pointer;
 }
