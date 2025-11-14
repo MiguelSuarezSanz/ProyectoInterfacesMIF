@@ -80,8 +80,8 @@ class FrameworkUtils {
 
         this.anadirSegmentoAUrL(target);
         this.loadCss(route, this.cssTag)
-            .then(await this.loadScript(route, this.jsTag))
             .then(await this.loadHtml(route, this.htmlTag))
+            .then(await this.loadScript(route, this.jsTag))
             .then(clearInterval(interval));
 
     }

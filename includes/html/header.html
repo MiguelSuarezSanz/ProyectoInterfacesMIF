@@ -3,9 +3,21 @@
         Masters & Dices
     </p>
 
-    <div class="header_list">
-        <div class="header_list_element" onclick="frameworkUtils.renderize('user')">
-            <p>Ejemplo</p>
+    <div class="header_list" style="gap: 1.2rem;">
+        <div class="header_list_element" onclick="frameworkUtils.renderize('index')">
+            <p>Inicio</p>
+        </div>
+        <div class="header_list_element" onclick="frameworkUtils.renderize('destacados')">
+            <p>Destacados</p>
+        </div>
+        <div class="header_list_element" onclick="frameworkUtils.renderize('destacados')">
+            <p>Busqueda Avanzada</p>
+        </div>
+        <div class="rounded_item" id="search_bar">
+            <p>
+                <input type="text" name="buscador" id="buscador" placeholder="Buscador">
+                <span class="material-icons" onclick="buscar()">search</span>
+            </p>
         </div>
     </div>
 

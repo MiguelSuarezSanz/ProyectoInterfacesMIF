@@ -24,6 +24,7 @@ main {
     background-color: #7459a4;
     box-shadow: 0 0.8rem 1rem inset #392d55, 0 -0.8rem 1rem inset #392d55;
     color: azure;
+    position: relative;
     z-index: -2; /* Coloca el pseudo-elemento detrás del contenido de main */
 }
 
@@ -72,6 +73,7 @@ main::before {
 
 .header_list_element:hover {
     color: #f68936;
+    text-shadow: 0 0 0.5rem black;
 }
 
 .rounded_item {
@@ -87,6 +89,7 @@ main::before {
 
 .rounded_item:hover {
     background-color: #f68936;
+    box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.4);
 }
 
 .header_list_element {
@@ -104,4 +107,23 @@ main::before {
     display: flex;
     align-items: center;
     min-height: -webkit-fill-available;
+}
+
+#search_bar {
+    background-color: azure;
+    color: black;
+}
+
+#search_bar #buscador {
+    border: none;
+    background-color: azure;
+    padding: 0.2rem;
+    font-size: 1rem;
+}
+
+:focus-visible {
+    outline: 0;
+}
+input:-internal-autofill-selected {
+    background-color: azure !important;
 }
