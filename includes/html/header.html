@@ -1,12 +1,20 @@
 <div id="header">
-    <p id="header_title">
+    <p id="header_title" onclick="frameworkUtils.renderize('index')">
         Masters & Dices
     </p>
 
-    <div id="header_list">
-        <div id="header_user" class="header_list_element" onclick="frameworkUtils.renderize('user')">
-            <p>Inicia Sesión</p>
-            <img src="./resources/img/userIcon.png" alt="Icono de usuario" id="header_user_icon">
+    <div class="header_list">
+        <div class="header_list_element" onclick="frameworkUtils.renderize('user')">
+            <p>Ejemplo</p>
+        </div>
+    </div>
+
+    <div class="header_list">
+        <div class="rounded_item" onclick="frameworkUtils.renderize('user')">
+            <p>Registrate</p>
+        </div>
+        <div class="rounded_item" onclick="frameworkUtils.renderize('user')">
+            <p>Inicia Sesion <span class="material-icons">account_circle</span></p>
         </div>
     </div>
 </div>
