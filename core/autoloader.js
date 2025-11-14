@@ -78,9 +78,10 @@ class FrameworkUtils {
             return;
         }
 
+        this.anadirSegmentoAUrL(target);
         this.loadCss(route, this.cssTag)
-            .then(await this.loadScript(route, this.jsTag))
             .then(await this.loadHtml(route, this.htmlTag))
+            .then(await this.loadScript(route, this.jsTag))
             .then(clearInterval(interval));
 
     }
@@ -101,6 +102,40 @@ class FrameworkUtils {
 
     }
 
+    anadirSegmentoAUrL(nuevoSegmento) {
+        // 1. Crear un objeto URL a partir de la URL actual.
+        const url = new URL(window.location.href);
+    
+        // 2. Limpiar el path para volver a la raíz ("/"). Esto deja solo el origen.
+        url.pathname = '/';
+    
+        // 3. Quitar todos los parámetros de consulta existentes (vaciar el query string).
+        // Esto cumple con el requisito de "quitar los parametros".
+        url.search = '';
+    
+        // 4. Añadir el 'nuevoSegmento' como un parámetro de consulta llamado 'target'.
+        // Usamos encodeURIComponent para asegurar que el valor es seguro para la URL.
+        const segmentoCodificado = encodeURIComponent(nuevoSegmento);
+        url.searchParams.set('target', segmentoCodificado);
+    
+        // El hash (#seccion) se mantiene automáticamente ya que no lo hemos modificado.
+    
+        // 5. Manipular el historial del navegador sin recargar la página (el "falseo").
+        try {
+            const nuevaUrlString = url.toString(); 
+    
+            // Usamos history.pushState para actualizar la URL visible.
+            window.history.pushState(
+                null, // Objeto de estado
+                "",   // Título (ignorado)
+                nuevaUrlString
+            );
+            return;
+        } catch (error) {
+            return;
+        }
+    }
+
     async autoInit() {
 
         this.loadHtml(`includes/html/${this.headerName}`, "header");
@@ -108,7 +143,7 @@ class FrameworkUtils {
 
         if (this.urlParams.has("target")) {
 
-            this.renderize(urlParams.get("target"));
+            this.renderize(this.urlParams.get("target"));
 
         } else {
 
