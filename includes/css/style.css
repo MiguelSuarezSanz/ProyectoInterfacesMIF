@@ -19,6 +19,17 @@
     justify-content: space-between;
 }
 
+/* Estilos contenido Footer */
+#footer a {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+}
+
+#footer a:visited {
+    color: white;
+}
+
 main {
     background-color: #7459a4;
     box-shadow: 0 0.8rem 1rem inset #392d55, 0 -0.8rem 1rem inset #392d55;
