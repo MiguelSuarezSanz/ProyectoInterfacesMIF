@@ -6,18 +6,15 @@
     font-family: "Alice", serif;
 }
 
-/* Estilos Header */
+/* Estilos Header y Footer */
 #header, #footer {
     display: flex;
     padding: 0.5rem 1rem;
     flex-direction: row;
+    justify-content: space-between;
     background-color: #392d55;
     color: azure;
     align-items: center;
-}
-
-#header {
-    justify-content: space-between;
 }
 
 main {
@@ -26,6 +23,7 @@ main {
     color: azure;
     position: relative;
     z-index: -2; /* Coloca el pseudo-elemento detrás del contenido de main */
+    padding: 10vh 5vw;
 }
 
 main::before {
@@ -59,6 +57,7 @@ main::before {
     cursor: pointer;
 }
 
+/* Header */
 .header_list {
     display: flex;
     align-content: center;
@@ -127,3 +126,47 @@ main::before {
 input:-internal-autofill-selected {
     background-color: azure !important;
 }
+
+.caja {
+    background-color: #fcf8e8; /* Crema claro */
+    border: 1px solid #c9c0a6;
+    border-radius: 3px 50px 3px 50px / 50px 3px 50px 3px; /* Bordes irregulares */
+    box-shadow: 
+        3px 3px 5px rgba(0, 0, 0, 0.3), /* Sombra simple */
+        inset 0 0 15px rgba(224, 209, 169, 0.5); /* Tinte de vejez */
+    padding: calc(1.2rem/1.618) 1.2rem;
+    color: #4a3e30;
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+
+
+/*Media Queris*/
+
+/* Pantallas de bajo tamaño */
+@media (width <= 1250px) {
+
+    #header {
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    main::before {
+        background-size: calc(100vw/7);
+    }
+    
+}
+
+/* Moviles */
+@media (width <= 750px) {
+
+    .header_list {
+        flex-direction: column;
+    }
+
+    main::before {
+        background-size: calc(100vw/4);
+    }
+    
+}
+
