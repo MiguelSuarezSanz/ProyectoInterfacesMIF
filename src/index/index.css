@@ -1,0 +1,44 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtitulo {
+    font-family: "Almendra", serif;
+    font-size: 4rem;
+    text-align: center;
+}
+
+#primer_panel img {
+    max-width: 80vw;
+}
+
+main {
+    gap: 5vh;
+}
+
+/*Media Queris*/
+
+/* Pantallas de bajo tamaño */
+@media (width <= 1250px) {
+    
+    .subtitulo {
+        font-family: "Almendra", serif;
+        font-size: 3.5rem;
+        text-align: center;
+    }
+    
+}
+
+/* Moviles */
+@media (width <= 750px) {
+    
+    .subtitulo {
+        font-family: "Almendra", serif;
+        font-size: 2.8rem;
+        text-align: center;
+    }
+    
+}
