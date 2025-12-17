@@ -1,1 +1,2 @@
-console.log("Index cargado");
+// IMPORTANTE SI NO TE FUFA EL SCRIPT ENVUELVELO EN LAS LLAVES
+(function() {})();

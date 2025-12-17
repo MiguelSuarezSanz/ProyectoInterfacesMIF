@@ -57,7 +57,7 @@ class FrameworkUtils {
     }
 
     async loadScript(target, tag) {
-        
+
         target += ".js";
     
         if (!this.checkRoute(target)) {
@@ -65,24 +65,22 @@ class FrameworkUtils {
             return;
         }
     
-        // Eliminar el script anterior si existe
+        // ✅ Eliminar el script anterior completamente
         let oldScript = document.querySelector(tag);
         if (oldScript) {
             oldScript.remove();
         }
     
-        // Crear un nuevo script
+        // ✅ Crear un NUEVO script (no reutilizar el anterior)
         let newScript = document.createElement('script');
-        newScript.id = tag.replace('#', ''); // quitamos el # del id
+        newScript.id = tag.replace('#', '');
         newScript.src = target;
         
-        // Esperar a que se cargue
-        await new Promise((resolve, reject) => {
+        // Esperar a que cargue
+        return new Promise((resolve) => {
             newScript.onload = resolve;
-            newScript.onerror = reject;
             document.body.appendChild(newScript);
         });
-
     }
 
     async renderize(target) {
