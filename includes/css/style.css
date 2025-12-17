@@ -22,12 +22,16 @@ main {
     box-shadow: 0 0.8rem 1rem inset #392d55, 0 -0.8rem 1rem inset #392d55;
     color: azure;
     position: relative;
-    z-index: -2; /* Coloca el pseudo-elemento detrás del contenido de main */
-    padding: 10vh 5vw;
+    z-index: 0; /* Coloca el pseudo-elemento detrás del contenido de main */
+    padding: 5vh 5vw;
+}
+
+main * {
+    z-index: 2;
 }
 
 main::before {
-    content: ""; /* Obligatorio para pseudo-elementos */
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -36,8 +40,9 @@ main::before {
     background-image: url(/resources/img/patron.png);
     background-repeat: repeat;
     background-size: calc(100vw/10);
-    opacity: 0.2; /* ¡NUEVO! Ajusta la opacidad de la imagen de fondo */
-    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido de main */
+    opacity: 0.2;
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Estilos Loanding */

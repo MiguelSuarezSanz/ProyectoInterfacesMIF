@@ -1,0 +1,12 @@
+#search_bar_advance #buscadorAvanzado {
+    border: none;
+    background-color: azure;
+    padding: 0.2rem;
+    font-size: 1rem;
+    user-select: text;
+}
+
+#search_bar_advance {
+    background-color: azure;
+    color: black;
+}
