@@ -18,17 +18,27 @@ class FrameworkUtils {
     }
 
     async loadHtml(target, tag) {
+        
+    target += ".html";
 
-        target += ".html";
+    if (!this.checkRoute(target)) {
+        console.error(`FATAL ERROR, error HTML not found: ${target}`);
+        return;
+    }
 
-        if (!this.checkRoute(target)) {
-            console.error(`FATAL ERROR, error HTML not found: ${target}`);
-            return;
-        }
-
-        fetch(target)
-            .then(response => response.text())
-            .then(data => document.querySelector(tag).innerHTML = data);
+    const response = await fetch(target);
+    const data = await response.text();
+    const container = document.querySelector(tag);
+    container.innerHTML = data;
+    
+    // Forzar re-rendering de inputs
+    const inputs = container.querySelectorAll('input');
+    inputs.forEach(input => {
+        const parent = input.parentNode;
+        const next = input.nextSibling;
+        parent.removeChild(input);
+        parent.insertBefore(input, next);
+    });
 
     }
 
@@ -47,16 +57,31 @@ class FrameworkUtils {
     }
 
     async loadScript(target, tag) {
-
+        
         target += ".js";
-
+    
         if (!this.checkRoute(target)) {
             console.error(`FATAL ERROR, error Script not found: ${target}`);
             return;
         }
-
-        let script = document.querySelector(tag);
-        script.src = target;
+    
+        // Eliminar el script anterior si existe
+        let oldScript = document.querySelector(tag);
+        if (oldScript) {
+            oldScript.remove();
+        }
+    
+        // Crear un nuevo script
+        let newScript = document.createElement('script');
+        newScript.id = tag.replace('#', ''); // quitamos el # del id
+        newScript.src = target;
+        
+        // Esperar a que se cargue
+        await new Promise((resolve, reject) => {
+            newScript.onload = resolve;
+            newScript.onerror = reject;
+            document.body.appendChild(newScript);
+        });
 
     }
 
@@ -79,10 +104,20 @@ class FrameworkUtils {
         }
 
         this.anadirSegmentoAUrL(target);
-        this.loadCss(route, this.cssTag)
-            .then(await this.loadHtml(route, this.htmlTag))
-            .then(await this.loadScript(route, this.jsTag))
-            .then(clearInterval(interval));
+        
+        // Cargar CSS primero
+        await this.loadCss(route, this.cssTag);
+        
+        // Luego cargar HTML
+        await this.loadHtml(route, this.htmlTag);
+        
+        // Esperar un tick para que el DOM se actualice completamente
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
+        // Finalmente cargar el script
+        await this.loadScript(route, this.jsTag);
+
+        clearInterval(interval);
 
     }
 
