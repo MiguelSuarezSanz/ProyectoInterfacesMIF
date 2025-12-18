@@ -139,6 +139,27 @@ input:-internal-autofill-selected {
     background-color: azure !important;
 }
 
+#black {
+    position: absolute;
+    display: flex;
+
+    left: 0;
+    top: 0;
+    height: 0vh;
+    width: 0vw;
+    background-color: #00000040;
+
+    z-index: 5;
+}
+
+#popup {
+    position: absolute;
+    top: -1000px;
+    width: 80vw;
+    left: 10vw;
+    z-index: 6;
+}
+
 .caja {
     background-color: #fcf8e8; /* Crema claro */
     border: 1px solid #c9c0a6;
