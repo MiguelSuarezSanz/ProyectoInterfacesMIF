@@ -17,6 +17,7 @@
 
 main {
     gap: 5vh;
+    align-items: flex-start;
 }
 
 /*Media Queris*/
