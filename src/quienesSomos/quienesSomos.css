@@ -17,16 +17,7 @@
 
 main {
     gap: 5vh;
-    align-items: center;
-}
-
-.content {
     align-items: flex-start;
-}
-
-li {
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
 
 /*Media Queris*/
